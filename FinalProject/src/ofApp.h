@@ -1,7 +1,18 @@
 #pragma once
+#include <ctime>
+#include <cstdlib>
+#include <utility>
 
 #include "ofMain.h"
+#include "Basketball.h"
+#include "ofxGui.h"
 
+enum GameState{
+	PAUSED,
+	IN_PROGRESS,
+	NEXT_ROUND,
+	GAME_OVER
+};
 class ofApp : public ofBaseApp{
 
 	public:
@@ -20,5 +31,18 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+
+		ofxPanel gameGui;
+		ofParameter<float> endTime;
+		ofImage basketball;
+		ofImage hoop;
+		vector <shared_ptr<ofxBox2dCircle> > circles;
+
+		
+private:
+	GameState current_state = IN_PROGRESS;
+	Basketball basketball_game_;
+
+
 		
 };
