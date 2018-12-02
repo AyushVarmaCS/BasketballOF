@@ -6,12 +6,17 @@
 #include "ofMain.h"
 #include "Basketball.h"
 #include "ofxGui.h"
+#include "ofxBox2d.h"
+#include "ofxBox2dCircle.h"
+#include "ofxBox2dBaseShape.h"
+
 
 enum GameState{
 	PAUSED,
 	IN_PROGRESS,
 	NEXT_ROUND,
-	GAME_OVER
+	GAME_OVER,
+	SHOW_CURRENT_SCORE
 };
 class ofApp : public ofBaseApp{
 
@@ -33,10 +38,18 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		ofxPanel gameGui;
+		ofxBox2d box2d;
 		ofParameter<float> endTime;
-		ofImage basketball;
+		CONST int kTimeLimit = 30;
+
+		//ofImage basketball;
 		ofImage hoop;
-		vector <shared_ptr<ofxBox2dCircle> > circles;
+		vector<shared_ptr<ofxBox2dCircle>> circles;
+		vector<shared_ptr<ofxBox2dRect>> rectangles;
+		void drawGravity(ofPoint p, ofPoint gravity);
+		ofRectangle baketball_world;
+
+
 
 		
 private:
