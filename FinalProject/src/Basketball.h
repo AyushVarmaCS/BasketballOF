@@ -10,8 +10,12 @@ public:
 	int score = 0;
 	string current_round;
 	void makeShot();
+	void StartContact();
+	void EndContact();
 	int getScore();
 	int getRound();
 	float getTime();
+
+	bool hoop_contact = false;
 
 };

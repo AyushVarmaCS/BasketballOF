@@ -2,6 +2,8 @@
 #include "Basketball.h"
 using namespace std;
 #include "ofApp.h"
+#include "ofxBox2d.h"
+
 
 
 
@@ -28,5 +30,14 @@ void Basketball::makeShot(){
 	ofSetColor(0, 0, 0);
 	ofDrawBitmapString(made_shot, ofGetWindowWidth() / 2, ofGetWindowHeight() / 3);
 }
+
+void Basketball::StartContact() {
+	hoop_contact = true;
+}
+
+void Basketball::EndContact() {
+	hoop_contact = false;
+}
+
 
 
