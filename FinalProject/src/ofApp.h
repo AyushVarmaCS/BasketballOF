@@ -54,6 +54,7 @@ class ofApp : public ofBaseApp{
 		ofRectangle basketball_world;
 		int score = 0;
 		ofRectangle hoop_bounds;
+		ofRectangle reg_bounds;
 
 		bool basketball_contact = false;
 
