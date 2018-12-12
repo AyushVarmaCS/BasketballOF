@@ -27,11 +27,13 @@ void ofApp::setup() {
 	auto basketball = std::make_shared<ofxBox2dCircle>();
 	basketball.get()->setPhysics(1, 0.5, 1); //density, bounce, friction
 	basketball.get()->setup(box2d.getWorld(), ofGetWindowWidth() / 6, ofGetWindowHeight() / 2, 20); //world(gui), x, y, radius
+	//basketball.get()->body->SetType(b2_ballBody);
 	circles.push_back(basketball);
 
 	auto hoop = std::make_shared < ofxBox2dRect>();
 	hoop.get()->setPhysics(1, 0.5, 1);
 	hoop.get()->setup(box2d.getWorld(), 650, 400, 225, 225);  //world, x,y,w,h
+	//hoop.get()->body->SetType(b2_hoopBody);
 	rectangles.push_back(hoop);
 
 
@@ -46,6 +48,8 @@ void ofApp::update() {
 
 
 	box2d.update();
+	cout << "hoop score" << hoop_contact.score << endl;
+
 
 	if (basketball_game_.getRound() == basketball_game_.last_round) {
 		current_state = GAME_OVER;
@@ -55,6 +59,7 @@ void ofApp::update() {
 		//round++;
 	}
 
+	//implement timer and launcher as well
 }
 
 //--------------------------------------------------------------

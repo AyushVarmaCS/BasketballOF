@@ -55,6 +55,7 @@ public:
 	int score = 0;
 	ofRectangle hoop_bounds;
 	ofRectangle reg_bounds;
+	int basketball_score = 0;
 	
 	ofxBox2dContactListener hoop_contact;
 
@@ -63,6 +64,7 @@ public:
 private:
 	GameState current_state = IN_PROGRESS;
 	Basketball basketball_game_;
+	int bball_score = 0;
 
 
 
