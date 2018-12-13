@@ -46,7 +46,7 @@ public:
 	CONST int kTimeLimit = 30;
 
 	//ofImage basketball;
-	ofImage hoop;
+	//ofImage hoop;
 	vector<shared_ptr<ofxBox2dCircle>> circles;
 	vector<shared_ptr<ofxBox2dRect>> rectangles;
 	vector < shared_ptr < ofxBox2dPolygon>> test1;
