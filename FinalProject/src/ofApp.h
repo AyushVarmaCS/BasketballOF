@@ -45,17 +45,10 @@ public:
 	ofParameter<float> endTime;
 	CONST int kTimeLimit = 30;
 
-	//ofImage basketball;
-	//ofImage hoop;
 	vector<shared_ptr<ofxBox2dCircle>> circles;
 	vector<shared_ptr<ofxBox2dRect>> rectangles;
-	vector < shared_ptr < ofxBox2dPolygon>> test1;
 	void drawGravity(ofPoint p, ofPoint gravity);
 	ofRectangle basketball_world;
-	int score = 0;
-	ofRectangle hoop_bounds;
-	ofRectangle reg_bounds;
-	int basketball_score = 0;
 	
 	ofxBox2dContactListener hoop_contact;
 

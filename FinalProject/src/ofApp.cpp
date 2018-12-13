@@ -3,6 +3,7 @@ using namespace std;
 #include "ofxBox2dContactListener.h"
 
 auto basketball = std::make_shared<ofxBox2dCircle>();
+bool check = false;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -16,13 +17,12 @@ void ofApp::setup(){
 
 	box2d.setContactListener(&hoop_contact);
 	
-
 	basketball.get()->setPhysics(hoop_contact.ball_density, hoop_contact.ball_bounce, hoop_contact.ball_friction); //density, bounce, friction
 	basketball.get()->setup(box2d.getWorld(), ofGetWindowWidth() / 6, ofGetWindowHeight() / 2, 20); //world(gui), x, y, radius
 	circles.push_back(basketball);
 
 	auto hoop = std::make_shared < ofxBox2dRect>();
-	hoop.get()->setPhysics(100000, 0.0000001, 0.00000001);
+	hoop.get()->setPhysics(100000000, 0.0000001, 0.00000001);
 	hoop.get()->setup(box2d.getWorld(), 900, 400, 30, 30);  //world, x,y,w,h
 	rectangles.push_back(hoop);
 
@@ -45,7 +45,7 @@ void ofApp::update() {
 
 
 	box2d.update();
-	bool check = false;
+	
 
 	if (basketball_game_.getRound() == basketball_game_.last_round) {
 		current_state = GAME_OVER;
@@ -55,15 +55,7 @@ void ofApp::update() {
 		//round++;
 	}
 
-	if (hoop_contact.bucket == true) {
-		basketball.get()->setup(box2d.getWorld(), ofGetWindowWidth() / 6, ofGetWindowHeight() / 2, 20); //world(gui), x, y, radius
 
-	}
-
-	//if (hoop_contact.score == 5) {
-		
-//	}
-	//basketball.get()->setup(box2d.getWorld(), ofGetWindowWidth() / 6, ofGetWindowHeight() / 2, 20); //world(gui), x, y, radius
 
 
 
@@ -72,16 +64,10 @@ void ofApp::update() {
 //--------------------------------------------------------------
 void ofApp::draw() {
 
-	/*baketball_world.inside(ofGetMouseX(), ofGetMouseY()) ? ofSetColor(80) : ofSetColor(100);
-	ofFill();
-	ofDrawRectangle(baketball_world);*/
-
-
 
 	ofFill();
 	ofSetColor(225, 165, 0);
 	for (auto x : circles) {
-		//ofFill();
 		x.get()->draw();
 
 	}
@@ -93,13 +79,6 @@ void ofApp::draw() {
 
 	ofDrawBitmapString("Score: ", ofGetWindowWidth() / 10.0, ofGetWindowHeight() / 4.0);
 	ofDrawBitmapString(hoop_contact.score, ofGetWindowWidth() / 10.0, ofGetWindowHeight() / 3.6);
-	
-
-
-//	ofPoint center(500, 500);
-	//drawGravity(center, box2d.getGravity());
-	//basketball.get()->setup(box2d.getWorld(), ofGetWindowWidth() / 6, ofGetWindowHeight() / 2, 20); //world(gui), x, y, radius
-
 	
 }
 
@@ -121,10 +100,7 @@ void ofApp::drawGravity(ofPoint p, ofPoint gravity)
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
-	int player_key = toupper(key);
-	if (player_key == 'S') {
-		//show score
-	}
+	
 
 
 }
@@ -141,10 +117,7 @@ void ofApp::mouseMoved(int x, int y) {
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button) {
-	/*float maxGravity = 1000;
-	float gx = ofMap(x, 0, 500, -maxGravity, maxGravity);
-	float gy = ofMap(y, 0, ofGetHeight(), -maxGravity, maxGravity);
-	box2d.setGravity(gx, gy);*/
+	
 }
 
 //--------------------------------------------------------------
@@ -185,27 +158,3 @@ void ofApp::dragEvent(ofDragInfo dragInfo) {
 }
 
 
-void ofApp::BeginContact(b2Contact* contact) {
-	/*b2Fixture ball = contact->GetFixtureA;
-	b2Fixture hoop = contact->GetFixtureB;
-	b2Body ball_body = ball.GetBody;
-	b2Body hoop_body = hoop.GetBody;
-
-	if (basketball_contact) {
-		score++;
-	}
-*/
-
-}
-
-void EndContact(b2Contact* contact)
-{ /* handle end event */
-}
-
-void PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
-{ /* handle pre-solve event */
-}
-
-void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
-{ /* handle post-solve event */
-}
