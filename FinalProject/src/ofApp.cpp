@@ -2,6 +2,7 @@
 using namespace std;
 #include "ofxBox2dContactListener.h"
 
+
 //--------------------------------------------------------------
 void ofApp::setup() {
 
@@ -19,6 +20,11 @@ void ofApp::setup() {
 	hoop_box.init();
 
 	box2d.setContactListener(&hoop_contact);
+	
+	ofSoundPlayer dribble;
+//	dribble.
+	
+
 
 	
 
@@ -31,7 +37,7 @@ void ofApp::setup() {
 	circles.push_back(basketball);
 
 	auto hoop = std::make_shared < ofxBox2dRect>();
-	hoop.get()->setPhysics(1, 0.5, 1);
+	hoop.get()->setPhysics(0, 0, 0);
 	hoop.get()->setup(box2d.getWorld(), 650, 400, 225, 225);  //world, x,y,w,h
 	//hoop.get()->body->SetType(b2_hoopBody);
 	rectangles.push_back(hoop);
@@ -48,7 +54,7 @@ void ofApp::update() {
 
 
 	box2d.update();
-	cout << "hoop score" << hoop_contact.score << endl;
+	//cout << "hoop score" << hoop_contact.score << endl;
 
 
 	if (basketball_game_.getRound() == basketball_game_.last_round) {
